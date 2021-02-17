@@ -20,17 +20,16 @@
 
 ## items テーブル
 
-| Column       | Type     | Options                        |
-| ------------ | ---------| ----------------------------   |
-| name         | string   | null: false                    |
-| text         | text     | null: false                    |
-| category_id  | integer  | null: false, foreign_key: true |
-| status_id    | integer  | null: false, foreign_key: true |
-| burden_id    | integer  | null: false, foreign_key: true |
-| area_id      | integer  | null: false, foreign_key: true |
-| days_id      | integer  | null: false, foreign_key: true |
-| price        | integer  | null: false                    |
-
+| Column       | Type     | Options      |
+| ------------ | ---------| ------------ |
+| name         | string   | null: false  |
+| text         | text     | null: false  |
+| category_id  | integer  | null: false  |
+| status_id    | integer  | null: false  |
+| burden_id    | integer  | null: false  |
+| area_id      | integer  | null: false  |
+| days_id      | integer  | null: false  |
+| price        | integer  | null: false  |
 
 
 ### Association
@@ -47,16 +46,18 @@
 
 - has_one :shipping_address
 - belongs_to :item
+- belongs_to :user
 
 ## shipping_addresses テーブル
 
-| Column          | Type    | Options                        |
-| --------------- | ------- | ------------------------------ |
-| postal_code     | string  | null: false                    |
-| area_id         | integer | null: false, foreign_key: true |
-| municipalites   | string  | null: false                    |
-| address         | string  | null: false                    |
-| building_name   | string  |                                |
-| phone_number    | string  | null: false                    |
+| Column          | Type        | Options           |
+| --------------- | ----------- | ----------------- |
+| postal_code     | string      | null: false       |
+| area_id         | integer     | null: false       |
+| municipalites   | string      | null: false       |
+| address         | string      | null: false       |
+| building_name   | string      |                   |
+| phone_number    | string      | null: false       |
+| order           | references  | foreign_key: true |
 
 - belongs_to :order
