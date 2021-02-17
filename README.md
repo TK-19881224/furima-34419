@@ -2,16 +2,16 @@
 
 ## users テーブル
 
-| Column              | Type   | Options     |
-| ------------        | ------ | ----------- |
-| nickname            | string | null: false |
-| email               | string | null: false |
-| encrypted_password  | string | null: false |
-| lastname_ja         | string | null: false |
-| firstname_ja        | string | null: false |
-| lastname_ka         | string | null: false |
-| firstname_ka        | string | null: false |
-| birth_date          | date   | null: false |
+| Column              | Type   | Options                   |
+| ------------        | ------ | ------------------------  |
+| nickname            | string | null: false               |
+| email               | string | null: false, unique: true |
+| encrypted_password  | string | null: false               |
+| lastname_ja         | string | null: false               |
+| firstname_ja        | string | null: false               |
+| lastname_ka         | string | null: false               |
+| firstname_ka        | string | null: false               |
+| birth_date          | date   | null: false               |
 
 ### Association
 
@@ -20,16 +20,17 @@
 
 ## items テーブル
 
-| Column       | Type     | Options      |
-| ------------ | ---------| ------------ |
-| name         | string   | null: false  |
-| text         | text     | null: false  |
-| category_id  | integer  | null: false  |
-| status_id    | integer  | null: false  |
-| burden_id    | integer  | null: false  |
-| area_id      | integer  | null: false  |
-| days_id      | integer  | null: false  |
-| price        | integer  | null: false  |
+| Column       | Type       | Options           |
+| ------------ | -----------| ----------------  |
+| name         | string     | null: false       |
+| text         | text       | null: false       |
+| category_id  | integer    | null: false       |
+| status_id    | integer    | null: false       |
+| burden_id    | integer    | null: false       |
+| area_id      | integer    | null: false       |
+| days_id      | integer    | null: false       |
+| price        | integer    | null: false       |
+| user         | references | foreign_key: true |
 
 
 ### Association
