@@ -73,7 +73,7 @@ RSpec.describe Item, type: :model do
       expect(@item.errors.full_messages).to include("Price can't be blank", "Price is not a number")
     end
   
-    it "販売価格は、¥300~¥9,999,999の間のみ保存可能であること" do
+    it "販売価格は、¥299以下だと保存できないこと" do
       @item.price = 200
       @item.valid?
       expect(@item.errors.full_messages).to include("Price must be greater than or equal to 300")
