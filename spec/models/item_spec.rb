@@ -1,7 +1,6 @@
 require 'rails_helper'
 
 RSpec.describe Item, type: :model do
-  # pending "add some examples to (or delete) #{__FILE__}"
   before do
     @item = FactoryBot.build(:item)
   end
@@ -72,11 +71,60 @@ RSpec.describe Item, type: :model do
     end
   
     it "販売価格は半角数字のみ保存可能であること" do
+      @item.price = 111111
+      @item.valid?
+      expect(@item).to be_valid
+    end
+    
+    it "10,000,000以上では登録できないこと" do
+      @item.price = 200000000
+      @item.valid?
+      expect(@item.errors.full_messages).to include("Price must be less than or equal to 99999999")
+    end
+
+    it "半角英語だけでは登録できないこと" do
+      @item.price = "aaaaaa"
+      @item.valid?
+      expect(@item.errors.full_messages).to include("Price is not a number", "Price is not a number")
+    end
+
+    it "全角文字では登録できないこと" do
       @item.price = "１１１１１"
       @item.valid?
       expect(@item.errors.full_messages).to include("Price is not a number")
     end
-  
+
+    it "categoryカラムのidが1の場合保存できない" do
+      @item.category_id  = 1
+      @item.valid?
+      expect(@item.errors.full_messages).to include("Category must be other than 1")
+    end
+
+    it "statusカラムのidが1の場合保存できない" do
+      @item.status_id  = 1
+      @item.valid?
+      expect(@item.errors.full_messages).to include("Status must be other than 1")
+    end
+
+    it "burdenカラムのidが1の場合保存できない" do
+      @item.burden_id  = 1
+      @item.valid?
+      expect(@item.errors.full_messages).to include("Burden must be other than 1")
+    end
+
+    it "areaカラムのidが0の場合保存できない" do
+      @item.area_id  = 0
+      @item.valid?
+      expect(@item.errors.full_messages).to include("Area must be other than 0")
+    end
+
+    it "daysカラムのidが1の場合保存できない" do
+      @item.days_id  = 1
+      @item.valid?
+      binding.pry
+      expect(@item.errors.full_messages).to include("Days must be other than 1")
+    end
+
   end
 
 end

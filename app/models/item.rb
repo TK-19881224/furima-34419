@@ -11,14 +11,13 @@ class Item < ApplicationRecord
 
   with_options numericality: { other_than: 1 } do
     
-    validates :area_id   
     validates :burden_id
     validates :category_id
     validates :days_id
     validates :status_id
 
   end
-
+    validates :area_id,numericality: { other_than: 0 }   
 
   with_options presence: true do
 
@@ -30,7 +29,8 @@ class Item < ApplicationRecord
     validates :burden_id  
     validates :area_id    
     validates :days_id    
-    validates :price, numericality: { only_integer: true, greater_than_or_equal_to: 300, less_than_or_equal_to: 99999999}        
+    validates :price, numericality: { greater_than_or_equal_to: 300, less_than_or_equal_to: 99999999 }
+    validates :price, numericality: { with: /\A[a-zA-Z]+\z/ } 
   
   end
 
