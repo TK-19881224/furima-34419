@@ -15,9 +15,8 @@ class Item < ApplicationRecord
     validates :category_id
     validates :days_id
     validates :status_id
-
-  end
-    validates :area_id,numericality: { other_than: 0 }   
+    validates :area_id
+  end  
 
   with_options presence: true do
 
