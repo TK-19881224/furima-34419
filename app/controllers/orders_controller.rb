@@ -4,7 +4,7 @@ class OrdersController < ApplicationController
 
   def index  
     @purchase = Purchase.new
-    unless @purchase.user_id == current_user.id
+    if @purchase.user_id == current_user.id
       redirect_to root_path
     end
   end
