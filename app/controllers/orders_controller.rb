@@ -40,7 +40,7 @@ class OrdersController < ApplicationController
 
   def set_new
     @purchase = Purchase.new
-    if @purchase.user_id == current_user.id
+    if @purchase.user_id == current_user.id || @item.order.present?
       redirect_to root_path
     end
   end
