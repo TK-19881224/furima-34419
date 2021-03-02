@@ -35,12 +35,11 @@ class OrdersController < ApplicationController
       amount: @item.price, 
       card: purchase_params[:token],
       currency: 'jpy' 
-    )
+    ) 
   end
 
   def set_new
-    @purchase = Purchase.new
-    if @purchase.user_id == current_user.id || @item.order.present?
+    if @item.user_id == current_user.id || @item.order.present?
       redirect_to root_path
     end
   end
