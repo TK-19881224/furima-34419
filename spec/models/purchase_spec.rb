@@ -54,7 +54,7 @@ RSpec.describe Purchase, type: :model do
     end
 
     it "郵便番号の保存にはハイフンが必要であること（123-4567となる）" do
-      @purchase.postal_code = 1234567
+      @purchase.postal_code = "1234567"
       @purchase.valid?
       expect(@purchase.errors.full_messages).to include("Postal code is invalid")
     end

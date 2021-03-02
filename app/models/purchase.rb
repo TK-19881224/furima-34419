@@ -4,7 +4,6 @@ class Purchase
  
 
   # ここにバリデーションの処理を書く
-  validates :token, presence: true
 
   with_options presence: true do
     validates :postal_code, format: { with: /\A\d{3}[-]\d{4}\z/ }
@@ -15,6 +14,8 @@ class Purchase
 
     validates :user_id
     validates :item_id
+
+    validates :token
   end
     
 
