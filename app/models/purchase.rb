@@ -1,7 +1,6 @@
 class Purchase
   include ActiveModel::Model
-  attr_accessor :postal_code,:area_id,:municipalites,:address,:building_name,:phone_number,:user_id,:item_id
-  attr_accessor :token
+  attr_accessor :postal_code,:area_id,:municipalites,:address,:building_name,:phone_number,:user_id,:item_id,:token
  
 
   # ここにバリデーションの処理を書く
@@ -13,6 +12,9 @@ class Purchase
     validates :municipalites
     validates :address
     validates :phone_number, format: { with: /\A\d{11}\z/ }
+
+    validates :user_id
+    validates :item_id
   end
     
 
