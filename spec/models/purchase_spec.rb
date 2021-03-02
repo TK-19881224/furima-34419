@@ -2,7 +2,10 @@ require 'rails_helper'
 
 RSpec.describe Purchase, type: :model do
   before do
-    @purchase = FactoryBot.build(:purchase)
+    user = FactoryBot.create(:user)
+    item = FactoryBot.create(:item)
+    @purchase = FactoryBot.build(:purchase,user_id:user.id,item_id:item.id)
+    sleep(1)
   end
 
   context '配送先の情報入力が成功した時' do
@@ -10,7 +13,12 @@ RSpec.describe Purchase, type: :model do
     it "データが全て入力されている場合" do
       expect(@purchase).to be_valid
     end
- 
+
+    it "データが全て入力されている場合(ビル名無し)" do
+      @purchase.building_name = nil
+      @purchase.valid?
+      expect(@purchase).to be_valid
+    end
   end  
 
   context '配送先の情報入力に失敗した時' do
@@ -57,6 +65,12 @@ RSpec.describe Purchase, type: :model do
       expect(@purchase.errors.full_messages).to include("Phone number is invalid")
     end
 
+    it "電話番号は英数混合では登録できないこと" do
+      @purchase.phone_number = "090qwer1234"
+      @purchase.valid?
+      expect(@purchase.errors.full_messages).to include("Phone number is invalid")
+    end
+
     it "tokenが空では登録できないこと" do
       @purchase.token = nil
       @purchase.valid?
@@ -82,4 +96,4 @@ RSpec.describe Purchase, type: :model do
     end
 
   end
-end
+end 
