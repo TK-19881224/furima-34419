@@ -6,6 +6,7 @@ class Item < ApplicationRecord
   belongs_to :days
   belongs_to :status
   belongs_to :user
+  has_one :order
   
   has_one_attached :image
 
@@ -28,7 +29,7 @@ class Item < ApplicationRecord
     validates :burden_id  
     validates :area_id    
     validates :days_id    
-    validates :price, numericality: { greater_than_or_equal_to: 300, less_than_or_equal_to: 99999999 }
+    validates :price, numericality: { greater_than_or_equal_to: 300, less_than_or_equal_to: 9999999 }
   
   end
 

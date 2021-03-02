@@ -118,7 +118,7 @@ RSpec.describe Item, type: :model do
     it "areaカラムのidが1の場合保存できない" do
       @item.area_id  = 1
       @item.valid?
-      expect(@item.errors.full_messages).to include("Area must be other than 0")
+      expect(@item.errors.full_messages).to include("Area must be other than 1")
     end
 
     it "daysカラムのidが1の場合保存できない" do

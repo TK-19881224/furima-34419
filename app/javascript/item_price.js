@@ -2,8 +2,9 @@ window.addEventListener('load', () => {
  
  const priceInput = document.getElementById("item-price")
   priceInput.addEventListener("input", () => {
-    const inputValue = priceInput.value;
-    
+
+    const inputValue = document.getElementById("item-price").value;
+
     const addTaxDom = document.getElementById("add-tax-price");
     a = Math.floor(inputValue / 10)
     addTaxDom.innerHTML = a
