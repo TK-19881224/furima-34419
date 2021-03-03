@@ -4,6 +4,7 @@ class OrdersController < ApplicationController
   before_action :set_new, only: [:index, :create]
 
   def index  
+    @purchase = Purchase.new
   end
 
   def create
@@ -12,7 +13,7 @@ class OrdersController < ApplicationController
       pay_item
       @purchase.save
       redirect_to root_path
-    else
+    else  
       render :index
     end
   end
