@@ -29,6 +29,7 @@
     <%= f.submit "ログイン" ,class:"login-red-btn" %>
   </div>
 </div>
+<%= link_to 'Googleログイン', user_google_oauth2_omniauth_authorize_path, method: :post%>
 <% end %>
 
 <%= render "shared/second-footer"%>
