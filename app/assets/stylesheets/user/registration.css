@@ -158,3 +158,9 @@
   text-align: right;
   cursor: pointer;
 }
+
+.google-login{
+  position: relative;
+  top: 30px;
+  left: 290px;
+}
