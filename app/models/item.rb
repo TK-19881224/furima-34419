@@ -9,6 +9,7 @@ class Item < ApplicationRecord
   has_one :order
   
   has_one_attached :image
+  has_many :comments
 
   with_options numericality: { other_than: 1 } do
     
