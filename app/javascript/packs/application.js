@@ -8,6 +8,7 @@ require("@rails/ujs").start()
 require("channels")
 require("../item_price");
 require("../card")
+require('./preview')  // 追記する
 
 
 // Uncomment to copy all static images under ../images to the output folder and reference
