@@ -1,0 +1,22 @@
+ja:
+ activerecord:
+   attributes:
+     user:
+       nickname: ニックネーム
+       birth_date: 生年月日
+       lastname_ja: 名字
+       firstname_ja: 名前
+       lastname_ka: 名字（全角カタカナ）
+       firstname_ka: 名前（全角カタカナ）
+
+     item: 
+       burden_id: 配送料
+       category_id: カテゴリー
+       days_id: 日数
+       status_id: 商品の状態
+       area_id: 地域
+       image: 画像
+       name: 商品名
+       text: 商品の説明
+       price: 販売価格
+       
