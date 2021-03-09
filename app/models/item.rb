@@ -8,7 +8,7 @@ class Item < ApplicationRecord
   belongs_to :user
   has_one :order
   
-  has_one_attached :image
+  has_many_attached :images
   has_many :comments
 
   with_options numericality: { other_than: 1 } do
@@ -22,7 +22,7 @@ class Item < ApplicationRecord
 
   with_options presence: true do
 
-    validates :image
+    validates :images
     validates :name       
     validates :text       
     validates :category_id
