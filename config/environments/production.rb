@@ -44,8 +44,9 @@ Rails.application.configure do
   # config.action_cable.allowed_request_origins = [ 'http://example.com', /http:\/\/example.*/ ]
 
   ActionCable.server.config.disable_request_forgery_protection = true
-  config.action_cable.url = "wss://furima-34419.herokuapp.com/cable" 
-  config.action_cable.allowed_request_origins = ['https://furima-34419.herokuapp.com', 'http://furima-34419.herokuapp.com']
+  config.action_cable.url = "ws://52.199.247.205/cable" 
+  config.action_cable.allowed_request_origins = ['http://52.199.247.205']
+
 
   # Force all access to the app over SSL, use Strict-Transport-Security, and use secure cookies.
   # config.force_ssl = true
