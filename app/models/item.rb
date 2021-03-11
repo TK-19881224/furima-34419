@@ -7,12 +7,12 @@ class Item < ApplicationRecord
   belongs_to :status
   belongs_to :user
   has_one :order
-  
   has_many_attached :images
   has_many :comments
+  has_many :item_tag_relations
+  has_many :tags, through: :item_tag_relations
 
   with_options numericality: { other_than: 1 } do
-    
     validates :burden_id
     validates :category_id
     validates :days_id
@@ -21,7 +21,6 @@ class Item < ApplicationRecord
   end  
 
   with_options presence: true do
-
     validates :images
     validates :name       
     validates :text       
@@ -31,7 +30,6 @@ class Item < ApplicationRecord
     validates :area_id    
     validates :days_id    
     validates :price, numericality: { greater_than_or_equal_to: 300, less_than_or_equal_to: 9999999 }
-  
   end
 
 end

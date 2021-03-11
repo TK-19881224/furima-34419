@@ -34,9 +34,15 @@
       <%= link_to "購入画面に進む", item_orders_path(@item.id), method: :get, class:"item-red-btn"%>
     <% end %>
   <% end %>
-
     <div class="item-explain-box">
       <span><%= @item.text %></span>
+      <%# <ul class="tag"> %>
+          <%# <li class="tag-list"> %>
+          <%# <%item_tags.each do |tag| %>
+          <%# #<%=tag.message%>
+           <%# <%end%> 
+        <%# </li> %>
+        </ul>
     </div>
     <table class="detail-table">
       <tbody>
