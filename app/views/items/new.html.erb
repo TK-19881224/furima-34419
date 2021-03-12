@@ -5,7 +5,7 @@
   </header>
   <div class="items-sell-main">
     <h2 class="items-sell-title">商品の情報を入力</h2>
-    <%= form_with model: @item_tag, url: items_path, local: true do |f| %>
+    <%= form_with model: @item, local: true do |f| %>
     <%= render 'shared/error_messages', model: f.object %>
 
     <%# 出品画像 %>
@@ -15,13 +15,13 @@
         <span class="indispensable">必須</span>
       </div>
       <div class="click-upload">
-        <%# <p>
+        <p>
           <% @item.images.each do |image| %>
-            <%#= image_tag image, class: 'images' %>
-          <%# end %>
-        <%# </p> %> 
-        <%# </p> %>
-          <%= f.file_field :images, name: 'items_tag[images][]', id: 'item_image' %>
+            <%= image_tag image, class: 'images' %>
+          <% end %>
+        </p>
+        <p>
+          <%= f.file_field :images, name: 'item[images][]', id: 'item_image' %>
           クリックしてファイルをアップロード
         </p>
       </div>
@@ -41,10 +41,6 @@
           <span class="indispensable">必須</span>
         </div>
         <%= f.text_area :text, class:"items-text", id:"item-info", placeholder:"商品の説明（必須 1,000文字まで）（色、素材、重さ、定価、注意点など）例）2010年頃に1万円で購入したジャケットです。ライトグレーで傷はありません。あわせやすいのでおすすめです。" ,rows:"7" ,maxlength:"1000" %>
-        <div class="weight-bold-text", id='tag-field'>
-          <p><%= f.label :message, "タグ" %></p>
-          <%= f.text_field :message, class:"items-text" %>
-        </div>
       </div>
     </div>
     <%# /商品名と商品説明 %>
