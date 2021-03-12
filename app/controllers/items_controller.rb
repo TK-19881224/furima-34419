@@ -10,11 +10,11 @@ class ItemsController < ApplicationController
   end
   
   def new
-    @item_tag = Item.new
+    @item_tag = ItemsTag.new
   end
 
   def create
-    @item_tag = Item.new(item_params)
+    @item_tag = ItemsTag.new(item_params)
     if @item_tag.save
       redirect_to root_path
     else
@@ -32,7 +32,7 @@ class ItemsController < ApplicationController
   end
 
   def update
-    @item_tag = Item.new(edit_params)
+    @item_tag = ItemsTag.new(edit_params)
     if @item_tag.update(@item)
       redirect_to item_path
     else
@@ -57,6 +57,10 @@ class ItemsController < ApplicationController
 
   def set_item  
     @item = Item.find(params[:id])
+  end
+
+  def tag_item
+    @item_tag = @item.tags[0]
   end
 
 
