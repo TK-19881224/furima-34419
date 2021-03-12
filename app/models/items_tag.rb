@@ -31,12 +31,5 @@ class ItemsTag
 
     ItemTagRelation.create(item_id: item.id, tag_id: tag.id)
   end
-  def update(item)
-    update_item = item.update(name: name, text: text, category_id: category_id, status_id: status_id, burden_id: burden_id, area_id: area_id, days_id: days_id, price: price, user_id: user_id, images: images )
-    tag = Tag.where(message: message).first_or_initialize
-    tag.save
-
-
-  end
 
 end
